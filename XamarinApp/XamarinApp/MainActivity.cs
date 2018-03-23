@@ -1,6 +1,11 @@
-﻿using Android.App;
+﻿using System.Reflection.Emit;
+using Android.App;
+using Android.Bluetooth;
+using Android.Locations;
 using Android.Widget;
 using Android.OS;
+using Android.Renderscripts;
+using Android.Views;
 
 namespace XamarinApp
 {
@@ -13,8 +18,6 @@ namespace XamarinApp
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-
-
         }
     }
 }
