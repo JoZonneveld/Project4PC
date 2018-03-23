@@ -13,6 +13,11 @@ namespace XamarinApp
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
+
+            using (DB db = new DB())
+            {
+                db.CreateTable();
+            }
         }
     }
 }
