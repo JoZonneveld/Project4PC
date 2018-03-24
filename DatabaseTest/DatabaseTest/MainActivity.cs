@@ -4,6 +4,7 @@ using Android.App;
 using Android.Widget;
 using Android.OS;
 using Database;
+using DatabaseTest.Database;
 using SQLite;
 
 namespace DatabaseTest
@@ -19,27 +20,30 @@ namespace DatabaseTest
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
+            
 
-            string dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "dbTest.db3");
+            //DB connection
+            DB db = new DB();
 
-            // sqlite connection
-            var db = new SQLiteConnection(dbPath);
 
+            // calls db createtable function Requires a Object like Person
             db.CreateTable<Person>();
 
-            
-            //create Person
+            //create Person to insert into the db
             Person person = new Person(1, "Joost");
 
+            // Calls db Insert into table function requires an object to send with it
             db.Insert(person);
 
-            var Table = db.Table<Person>();
+            // Calls db Query and gets all data from a table in the db
+            var Table = db.Get<Person>();
+
             Items = new List<string>();
             foreach (var item in Table)
             {
                 Person nPerson = new Person(item.Id, item.Name);
 
-                Items.Add(nPerson.Name);
+                Items.Add(nPerson.Name); 
             }
 
             ListView = FindViewById<ListView>(Resource.Id.myListView);

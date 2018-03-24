@@ -34,7 +34,41 @@ namespace DatabaseTest.Database
 
         public void CreateTable<T>()
         {
-            db.CreateTable(typeof(T));
+            try
+            {
+                db.CreateTable(typeof(T));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public void Insert<T>(T Object)
+        {
+            try
+            {
+                db.Insert(Object);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public TableQuery<T> Get<T>() where T : new()
+        {
+            try
+            {
+                return db.Table<T>();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }
