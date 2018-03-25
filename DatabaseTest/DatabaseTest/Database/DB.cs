@@ -22,7 +22,7 @@ namespace DatabaseTest.Database
         public DB()
         {
             //sqlite databasepath
-            string dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "dbTest.db3");
+            dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "dbTest.db3");
 
             // sqlite connection
             db = new SQLiteConnection(dbPath);
