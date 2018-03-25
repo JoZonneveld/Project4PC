@@ -33,7 +33,7 @@ namespace DatabaseTest
             Person person = new Person(1, "Joost");
 
             // Calls db Insert into table function requires an object to send with it
-            db.Insert(person);
+            //db.Insert(person);
 
             // Calls db Query and gets all data from a table in the db
             var Table = db.Get<Person>();
