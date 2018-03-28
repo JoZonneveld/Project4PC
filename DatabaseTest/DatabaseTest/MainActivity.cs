@@ -6,6 +6,7 @@ using Android.Widget;
 using Android.OS;
 using Database;
 using DatabaseTest.Database;
+using DatabaseTest.Items;
 using SQLite;
 
 namespace DatabaseTest
@@ -15,7 +16,7 @@ namespace DatabaseTest
     {
         private List<string> Items;
         private ListView ListView;
-        private Button NewButton, UpdateButton;
+        private Button NewButton, UpdateButton, CleanButton;
         private EditText Input;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -31,29 +32,10 @@ namespace DatabaseTest
             db.CreateTable<Person>();
 
 
-            // calls db createtable function Requires a Object like Person
-            //db.CreateTable<Person>();
-
-            //create Person to insert into the db
-            //Person person = new Person(1, "Joost");
-
-            // Calls db Insert into table function requires an object to send with it
-            //db.Insert(person);
-
-            // Calls db Query and gets all data from a table in the db
-            //var Table = db.Get<Person>();
-
-            //Items = new List<string>();
-            //foreach (var item in Table)
-            //{
-            //    Person nPerson = new Person(item.Id, item.Name);
-
-            //    Items.Add(nPerson.Name); 
-            //}
-
             //create items (buttons, list text...)
             NewButton = FindViewById<Button>(Resource.Id.NewObject);
             UpdateButton = FindViewById<Button>(Resource.Id.UpdateGet);
+            CleanButton = FindViewById<Button>(Resource.Id.Clean);
             Input = FindViewById<EditText>(Resource.Id.NewPerson);
             ListView = FindViewById<ListView>(Resource.Id.myListView);
 
@@ -63,17 +45,17 @@ namespace DatabaseTest
 
             ListView.Adapter = Adapter;
 
-            NewButton.Click += delegate
+            List<ButtonAction> Buttons =  new List<ButtonAction>();
+            Buttons.Add(new ButtonAction(NewButton, () =>
             {
-                //db.Conn().Execute("DELETE FROM person"); //executes a delete function on db
                 if (Input.Text != "")
                 {
                     Person test = new Person(1, Input.Text);
                     db.Insert(test);
                 }
-            };
+            }));
 
-            UpdateButton.Click += delegate
+            Buttons.Add(new ButtonAction(UpdateButton, () =>
             {
                 var temp = db.Get<Person>();
                 Items.Clear();
@@ -83,10 +65,17 @@ namespace DatabaseTest
                 }
                 Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, Items);
                 ListView.Adapter = Adapter;
+            }));
 
-            };
+            Buttons.Add(new ButtonAction(CleanButton, () =>
+            {
+                db.Query("DELETE FROM Person");
+            }));
 
-            
+            foreach (var button in Buttons)
+            {
+                button.Activate();
+            }
         }
     }
 }

@@ -44,6 +44,9 @@ namespace DatabaseTest
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f040003
+			public const int Clean = 2130968579;
+			
 			// aapt resource value: 0x7f040001
 			public const int NewObject = 2130968577;
 			
@@ -53,8 +56,8 @@ namespace DatabaseTest
 			// aapt resource value: 0x7f040002
 			public const int UpdateGet = 2130968578;
 			
-			// aapt resource value: 0x7f040003
-			public const int myListView = 2130968579;
+			// aapt resource value: 0x7f040004
+			public const int myListView = 2130968580;
 			
 			static Id()
 			{

@@ -20,6 +20,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/UpdateGet" />
+    <Button
+        android:text="Clean"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Clean" />
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -17,7 +17,7 @@ namespace DatabaseTest.Database
     public class DB
     {
         private string dbPath;
-        private SQLiteConnection db;
+        private SQLiteConnection DbConn;
 
         public DB()
         {
@@ -25,19 +25,24 @@ namespace DatabaseTest.Database
             dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "dbTest.db3");
 
             // sqlite connection
-            db = new SQLiteConnection(dbPath);
+            DbConn = new SQLiteConnection(dbPath);
         }
 
         public SQLiteConnection Conn()
         {
-            return db;
+            return DbConn;
+        }
+
+        public void Query(string query)
+        {
+            DbConn.Execute(query);
         }
 
         public void CreateTable<T>()
         {
             try
             {
-                db.CreateTable(typeof(T));
+                DbConn.CreateTable(typeof(T));
             }
             catch (Exception e)
             {
@@ -50,7 +55,7 @@ namespace DatabaseTest.Database
         {
             try
             {
-                db.Insert(Object);
+                DbConn.Insert(Object);
             }
             catch (Exception e)
             {
@@ -63,7 +68,7 @@ namespace DatabaseTest.Database
         {
             try
             {
-                return db.Table<T>();
+                return DbConn.Table<T>();
             }
             catch (Exception e)
             {

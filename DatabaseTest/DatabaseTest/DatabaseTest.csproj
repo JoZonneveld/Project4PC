@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Database\DB.cs" />
     <Compile Include="Database\DBInterface.cs" />
+    <Compile Include="Items\ButtonAction.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Database\Person.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
