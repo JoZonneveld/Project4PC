@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Android.App;
 using Android.Widget;
 using Android.OS;
@@ -57,9 +58,10 @@ namespace DatabaseTest
 
             Buttons.Add(new ButtonAction(UpdateButton, () =>
             {
-                var temp = db.Get<Person>();
+                var Query = db.SelectFrom<Person>("SELECT * FROM Person WHERE Name = ? ", Input.Text);
+                
                 Items.Clear();
-                foreach (var row in temp)
+                foreach (var row in Query.ToList())
                 {
                     Items.Add(row.Name);
                 }
@@ -69,7 +71,7 @@ namespace DatabaseTest
 
             Buttons.Add(new ButtonAction(CleanButton, () =>
             {
-                db.Query("DELETE FROM Person");
+                db.DeleteFrom("DELETE FROM Person WHERE Name =?", Input.Text);
             }));
 
             foreach (var button in Buttons)

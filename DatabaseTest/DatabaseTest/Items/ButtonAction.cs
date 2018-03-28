@@ -26,7 +26,5 @@ namespace DatabaseTest.Items
         {
             Button.Click += delegate { Action(); };
         }
-
-
     }
 }
