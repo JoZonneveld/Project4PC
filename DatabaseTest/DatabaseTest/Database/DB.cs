@@ -18,7 +18,6 @@ namespace DatabaseTest.Database
     {
         private SQLiteConnection DbConn;
 
-
         #region Connection
         public DB()
         {
@@ -38,12 +37,12 @@ namespace DatabaseTest.Database
 
         #region Select 
 
-        public IEnumerable<T> SelectFrom<T>(string query) where T : new()
+        public IEnumerable<T> SelectFrom<T>(string query) where T : new() // without WHERE filter
         {
             return DbConn.DeferredQuery<T>(query);
         }
 
-        public IEnumerable<T> SelectFrom<T>(string query, string filter) where T : new()
+        public IEnumerable<T> SelectFrom<T>(string query, string filter) where T : new() // with WHERE filter
         {
             return DbConn.DeferredQuery<T>(query, filter);
         }
@@ -52,14 +51,14 @@ namespace DatabaseTest.Database
 
         #region Delete
 
-        public void DeleteFrom(string query, string filter) // with WHERE filter
-        {
-            DbConn.Execute(query, filter);
-        }
-
         public void DeleteFrom(string query) // without WHERE filter
         {
             DbConn.Execute(query);
+        }
+
+        public void DeleteFrom(string query, string filter) // with WHERE filter
+        {
+            DbConn.Execute(query, filter);
         }
 
         #endregion

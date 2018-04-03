@@ -19,6 +19,7 @@ namespace DatabaseTest
         private ListView ListView;
         private Button NewButton, UpdateButton, CleanButton;
         private EditText Input;
+        private ArrayAdapter<string> Adapter;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -26,27 +27,33 @@ namespace DatabaseTest
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-            
 
-            //DB connection
-            DB db = new DB();
-            db.CreateTable<Person>();
+            #region DB Conn
 
+            DB db = new DB(); // create db conn
+            db.CreateTable<Person>(); // Create test table (If not exists)
 
-            //create items (buttons, list text...)
-            NewButton = FindViewById<Button>(Resource.Id.NewObject);
-            UpdateButton = FindViewById<Button>(Resource.Id.UpdateGet);
-            CleanButton = FindViewById<Button>(Resource.Id.Clean);
-            Input = FindViewById<EditText>(Resource.Id.NewPerson);
-            ListView = FindViewById<ListView>(Resource.Id.myListView);
+            #endregion
 
-            Items = new List<string>();
+            //--------------------------------------------------------------------------------------------------------------------------
 
-            ArrayAdapter<string> Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, Items);
+            #region Buttons, Lists, Texts
 
-            ListView.Adapter = Adapter;
+            // Initializing
+            NewButton = FindViewById<Button>(Resource.Id.NewObject); // Button to create an Object in the db
+            UpdateButton = FindViewById<Button>(Resource.Id.UpdateGet); // Button to Update the List
+            CleanButton = FindViewById<Button>(Resource.Id.Clean); // Button to clear the db
+            Input = FindViewById<EditText>(Resource.Id.NewPerson); // Input field to enter a name
+            ListView = FindViewById<ListView>(Resource.Id.myListView); // List view for db results
+            Items = new List<string>(); // List for the items in the db
+            List<ButtonAction> Buttons = new List<ButtonAction>(); // List for buttons with Action
 
-            List<ButtonAction> Buttons =  new List<ButtonAction>();
+            #endregion
+
+            //--------------------------------------------------------------------------------------------------------------------------
+
+            #region Buttons
+
             Buttons.Add(new ButtonAction(NewButton, () =>
             {
                 if (Input.Text != "")
@@ -58,8 +65,16 @@ namespace DatabaseTest
 
             Buttons.Add(new ButtonAction(UpdateButton, () =>
             {
-                var Query = db.SelectFrom<Person>("SELECT * FROM Person WHERE Name = ? ", Input.Text);
-                
+                IEnumerable<Person> Query;
+                if (Input.Text != "")
+                {
+                    Query = db.SelectFrom<Person>("SELECT * FROM Person WHERE Name =?", Input.Text);
+                }
+                else
+                {
+                    Query = db.SelectFrom<Person>("SELECT * FROM Person");
+                }
+
                 Items.Clear();
                 foreach (var row in Query.ToList())
                 {
@@ -71,9 +86,20 @@ namespace DatabaseTest
 
             Buttons.Add(new ButtonAction(CleanButton, () =>
             {
-                db.DeleteFrom("DELETE FROM Person WHERE Name =?", Input.Text);
+                if (Input.Text != "")
+                {
+                    db.DeleteFrom("DELETE FROM Person WHERE Name =?", Input.Text);
+                }
+                else
+                {
+                    db.DeleteFrom("DELETE FROM Person");
+                }
+
             }));
 
+            #endregion
+
+            // Update all buttons with the click listener
             foreach (var button in Buttons)
             {
                 button.Activate();
