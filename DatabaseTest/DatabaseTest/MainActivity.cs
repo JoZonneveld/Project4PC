@@ -8,7 +8,6 @@ using Android.OS;
 using Database;
 using DatabaseTest.Database;
 using DatabaseTest.Items;
-using SQLite;
 
 namespace DatabaseTest
 {
