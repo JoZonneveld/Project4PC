@@ -57,7 +57,7 @@ namespace DatabaseTest
             {
                 if (Input.Text != "")
                 {
-                    Person test = new Person(1, Input.Text);
+                    Person test = new Person(1, Input.Text, "0123546", "test@hr.nl");
                     db.Insert(test);
                 }
             }));
@@ -77,7 +77,7 @@ namespace DatabaseTest
                 Items.Clear();
                 foreach (var row in Query.ToList())
                 {
-                    Items.Add(row.Name);
+                    Items.Add(row.ToString());
                 }
                 Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, Items);
                 ListView.Adapter = Adapter;

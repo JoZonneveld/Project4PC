@@ -37,62 +37,67 @@ namespace DatabaseTest.Database
 
         #region Select 
 
-        public IEnumerable<T> SelectFrom<T>(string query) where T : new() // without WHERE filter
+        // Here are the select from <Table> statements
+
+        //Select from state without filters
+        public IEnumerable<T> SelectFrom<T>(string query) where T : new() //<-- this means the query returns new objects of generic "T"
         {
             return DbConn.DeferredQuery<T>(query);
         }
 
-        public IEnumerable<T> SelectFrom<T>(string query, string filter) where T : new() // with WHERE filter
+        // Select from statement with 1 Filter variable
+        public IEnumerable<T> SelectFrom<T>(string query, string filter) where T : new()
         {
             return DbConn.DeferredQuery<T>(query, filter);
         }
 
+        // Select from statement with 2 Filter variable
+        public IEnumerable<T> SelectFrom<T>(string query, string filter1, string filter2) where T : new()
+        {
+            return DbConn.DeferredQuery<T>(query, filter1, filter2);
+        }
+
+        // create more functions with the same name but more filters ...........
+
         #endregion
 
         #region Delete
+        //Here are the Delete from <table> 
 
-        public void DeleteFrom(string query) // without WHERE filter
+        //Delete from Query without filters
+        public void DeleteFrom(string query)
         {
             DbConn.Execute(query);
         }
 
-        public void DeleteFrom(string query, string filter) // with WHERE filter
+        //Delete from Query with 1 filter
+        public void DeleteFrom(string query, string filter)
         {
             DbConn.Execute(query, filter);
+        }
+
+        //Delete from Query with 2 filters
+        public void DeleteFrom(string query, string filter1, string filter2)
+        {
+            DbConn.Execute(query, filter1, filter2);
         }
 
         #endregion
 
         #region Create
-
+        //Create table from an Object
         public void CreateTable<T>()
         {
-            try
-            {
-                DbConn.CreateTable(typeof(T));
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            DbConn.CreateTable(typeof(T));
         }
 
         #endregion
 
         #region Insert
-
+        //Insert into an db table from an existing object
         public void Insert<T>(T Object)
         {
-            try
-            {
-                DbConn.Insert(Object);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            DbConn.Insert(Object);
         }
 
         #endregion

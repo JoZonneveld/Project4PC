@@ -56,9 +56,6 @@ namespace DatabaseTest
 			// aapt resource value: 0x7f040002
 			public const int UpdateGet = 2130968578;
 			
-			// aapt resource value: 0x7f040005
-			public const int action_search = 2130968581;
-			
 			// aapt resource value: 0x7f040004
 			public const int myListView = 2130968580;
 			
@@ -77,9 +74,6 @@ namespace DatabaseTest
 			
 			// aapt resource value: 0x7f020000
 			public const int Main = 2130837504;
-			
-			// aapt resource value: 0x7f020001
-			public const int Menu = 2130837505;
 			
 			static Layout()
 			{
