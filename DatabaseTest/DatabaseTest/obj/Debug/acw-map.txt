@@ -1,0 +1,4 @@
+DatabaseTest.MainActivity, DatabaseTest;md53d1463aafe77984f2cb0838fb161819a.MainActivity
+DatabaseTest.MainActivity, DatabaseTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53d1463aafe77984f2cb0838fb161819a.MainActivity
+DatabaseTest.MainActivity;md53d1463aafe77984f2cb0838fb161819a.MainActivity
+databasetest.MainActivity;md53d1463aafe77984f2cb0838fb161819a.MainActivity
