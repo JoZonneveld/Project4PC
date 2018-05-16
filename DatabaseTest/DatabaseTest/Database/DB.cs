@@ -27,11 +27,7 @@ namespace DatabaseTest.Database
             // sqlite connection
             DbConn = new SQLiteConnection(dbPath);
         }
-
-        public SQLiteConnection Conn()
-        {
-            return DbConn;
-        }
+        
 
         #endregion
 
