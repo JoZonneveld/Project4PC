@@ -1,8 +1,0 @@
-Screens.Activity2, Screens;md5960b0739d6e3e5f6b8fd636fcae5397e.Activity2
-Screens.Activity2, Screens, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5960b0739d6e3e5f6b8fd636fcae5397e.Activity2
-Screens.Activity2;md5960b0739d6e3e5f6b8fd636fcae5397e.Activity2
-screens.Activity2;md5960b0739d6e3e5f6b8fd636fcae5397e.Activity2
-Screens.MainActivity, Screens;md5960b0739d6e3e5f6b8fd636fcae5397e.MainActivity
-Screens.MainActivity, Screens, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5960b0739d6e3e5f6b8fd636fcae5397e.MainActivity
-Screens.MainActivity;md5960b0739d6e3e5f6b8fd636fcae5397e.MainActivity
-screens.MainActivity;md5960b0739d6e3e5f6b8fd636fcae5397e.MainActivity
