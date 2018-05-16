@@ -1,1 +1,1 @@
-Hier in staan test applicaties met Xamarin en C# voor project 4
+Hier in staan test en workshop applicaties met Xamarin en C# voor project 4
