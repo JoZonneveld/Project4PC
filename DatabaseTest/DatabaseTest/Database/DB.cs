@@ -45,46 +45,45 @@ namespace DatabaseTest.Database
             return DbConn.DeferredQuery<T>(query);
         }
 
-        // Select from statement with 1 Filter variable
         public IEnumerable<T> SelectFrom<T>(string query, string filter) where T : new()
         {
             return DbConn.DeferredQuery<T>(query, filter);
         }
-
-        // Select from statement with 2 Filter variable
-        public IEnumerable<T> SelectFrom<T>(string query, string filter1, string filter2) where T : new()
+       
+        //Select statement with filters
+        public IEnumerable<T> SelectFrom<T>(string query, string[] filters) where T :new()
         {
-            return DbConn.DeferredQuery<T>(query, filter1, filter2);
+            return DbConn.DeferredQuery<T>(query, filters);
         }
-
+       
         // create more functions with the same name but more filters ...........
 
         #endregion
 
-        #region Delete
+        #region Delete & Update
         //Here are the Delete from <table> 
 
         //Delete from Query without filters
-        public void DeleteFrom(string query)
+        public void Execute(string query)
         {
             DbConn.Execute(query);
         }
 
         //Delete from Query with 1 filter
-        public void DeleteFrom(string query, string filter)
+        public void Execute(string query, string filter)
         {
             DbConn.Execute(query, filter);
         }
 
-        //Delete from Query with 2 filters
-        public void DeleteFrom(string query, string filter1, string filter2)
+        //Delete from Query with filters
+        public void Execute(string query, string[] filters)
         {
-            DbConn.Execute(query, filter1, filter2);
+            DbConn.Execute(query, filters);
         }
 
         #endregion
 
-        #region Create
+        #region Create table
         //Create table from an Object
         public void CreateTable<T>()
         {

@@ -36,7 +36,7 @@ namespace Database
 
         public override string ToString()
         {
-            return Name + " - " +  Phone + " - " + Adress;
+            return Id + " - " + Name;
         }
     }
 }

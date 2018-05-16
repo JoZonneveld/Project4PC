@@ -45,7 +45,13 @@ namespace Screens
 		{
 			
 			// aapt resource value: 0x7f040000
-			public const int Next = 2130968576;
+			public const int Menu = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int Next = 2130968577;
+			
+			// aapt resource value: 0x7f040002
+			public const int Screen2 = 2130968578;
 			
 			static Id()
 			{
@@ -64,7 +70,10 @@ namespace Screens
 			public const int Main = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int Screen2 = 2130837505;
+			public const int menu1 = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int Screen2 = 2130837506;
 			
 			static Layout()
 			{

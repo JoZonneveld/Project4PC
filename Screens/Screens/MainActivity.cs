@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using Android.Views;
 
 namespace Screens
 {
@@ -19,6 +20,24 @@ namespace Screens
             Next = FindViewById<Button>(Resource.Id.Next);
 
             Next.Click += delegate { StartActivity(typeof(Activity2)); };
+        }
+
+        public override bool OnPrepareOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Layout.menu1, menu);
+            return base.OnPrepareOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.Screen2:
+                    //do something
+                    StartActivity(typeof(Activity2));
+                    return true;
+            }
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

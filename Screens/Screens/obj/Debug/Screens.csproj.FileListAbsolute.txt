@@ -14,7 +14,7 @@ D:\Projects\Project4PC\Screens\Screens\obj\Debug\R.cs.flag
 D:\Projects\Project4PC\Screens\Screens\obj\Debug\uploadflags.txt
 D:\Projects\Project4PC\Screens\Screens\bin\Debug\Screens.dll.mdb
 D:\Projects\Project4PC\Screens\Screens\obj\Debug\android\assets\Screens.dll.mdb
-D:\Projects\Project4PC\Screens\Screens\bin\Debug\Screens.dll
+D:\Projects\Project4PC\Screens\Screens\obj\Debug\res\layout\menu1.xml
 bin\Debug\Mono.Android.pdb
 bin\Debug\mscorlib.pdb
 bin\Debug\System.Core.pdb

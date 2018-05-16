@@ -67,7 +67,7 @@ namespace DatabaseTest
                 IEnumerable<Person> Query;
                 if (Input.Text != "")
                 {
-                    Query = db.SelectFrom<Person>("SELECT * FROM Person WHERE Name =?", Input.Text);
+                    Query = db.SelectFrom<Person>("SELECT * FROM Person WHERE Name =? AND Id=? ", new []{Input.Text, "1"});
                 }
                 else
                 {
@@ -87,11 +87,11 @@ namespace DatabaseTest
             {
                 if (Input.Text != "")
                 {
-                    db.DeleteFrom("DELETE FROM Person WHERE Name =?", Input.Text);
+                    db.Execute("DELETE FROM Person WHERE Name =? AND Id =?", new []{Input.Text, "1"});
                 }
                 else
                 {
-                    db.DeleteFrom("DELETE FROM Person");
+                    db.Execute("DELETE FROM Person");
                 }
 
             }));
